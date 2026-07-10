@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contact UX designer James Martin.">
+    <title>Contact | James Martin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+      <div class="container py-3">
+        <a class="navbar-brand fw-bold" href="index.html">James Martin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto gap-lg-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <div class="row g-5 py-5">
+        <div class="col-lg-5">
+          <p class="eyebrow">Get in touch</p>
+          <h1 class="display-3 fw-bold mb-4">Let’s make something useful together.</h1>
+          <p class="lead text-secondary">Have a project, opportunity, or interesting problem to discuss? Send me a note and I’ll get back to you.</p>
+          <p class="mt-4"><strong>Currently available</strong><br><span class="text-secondary">For freelance projects and collaborations</span></p>
+        </div>
+        <div class="col-lg-6 offset-lg-1">
+          <form class="contact-card p-4 p-md-5" action="mailto:jamesdm88@gmail.com" method="post" enctype="text/plain">
+            <div class="mb-4">
+              <label class="form-label fw-semibold" for="name">Your name</label>
+              <input class="form-control form-control-lg" id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label fw-semibold" for="email">Email address</label>
+              <input class="form-control form-control-lg" id="email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="mb-4">
+              <label class="form-label fw-semibold" for="message">How can I help?</label>
+              <textarea class="form-control form-control-lg" id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button class="btn btn-dark btn-lg w-100" type="submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container border-top py-4 mt-5"><div class="d-flex flex-column flex-sm-row justify-content-between gap-2"><span>© 2026 James Martin</span><span class="text-secondary">Designed with care.</span></div></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

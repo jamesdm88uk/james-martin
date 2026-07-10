@@ -1,0 +1,112 @@
+:root {
+  --canvas: #f7f4ed;
+  --surface: #eee9de;
+  --ink: #20211e;
+  --muted: #6c6b64;
+  --accent: #d8ff57;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: "Manrope", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.navbar {
+  background: rgba(247, 244, 237, 0.95);
+}
+
+.navbar-brand,
+.nav-link {
+  color: var(--ink);
+}
+
+.nav-link {
+  font-weight: 600;
+}
+
+.nav-link.active,
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4rem;
+}
+
+.hero {
+  min-height: 70vh;
+}
+
+.hero h1,
+.page-header h1 {
+  max-width: 15ch;
+  letter-spacing: -0.055em;
+  line-height: 1.02;
+}
+
+.eyebrow,
+.section-number {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.btn {
+  border-radius: 0;
+  font-weight: 700;
+  padding: 0.85rem 1.4rem;
+}
+
+.btn-dark {
+  background: var(--ink);
+}
+
+.project-card,
+.contact-card {
+  background: var(--surface);
+  border: 1px solid rgba(32, 33, 30, 0.12);
+}
+
+.project-visual {
+  min-height: 18rem;
+  border: 1px solid rgba(32, 33, 30, 0.15);
+}
+
+.visual-one {
+  background: linear-gradient(135deg, #252622 50%, var(--accent) 50%);
+}
+
+.visual-two {
+  background: radial-gradient(circle at center, #f7f4ed 0 18%, transparent 19%), linear-gradient(135deg, #eb8f6a, #6e88d9);
+}
+
+.visual-three {
+  background: repeating-linear-gradient(90deg, var(--accent) 0 12%, var(--surface) 12% 24%);
+}
+
+.form-control {
+  background: var(--canvas);
+  border: 1px solid rgba(32, 33, 30, 0.35);
+  border-radius: 0;
+}
+
+.form-control:focus {
+  background: #fffdf8;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 0.2rem rgba(32, 33, 30, 0.12);
+}
+
+@media (max-width: 767.98px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .display-2,
+  .display-3 {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+}
