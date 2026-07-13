@@ -1,3 +1,152 @@
-Hello world!
-Nice to see you!
-Welcome to my place!
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>James Martin</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --background: #f7f3ec;
+        --surface: #ffffff;
+        --text: #1f2933;
+        --muted: #52616b;
+        --accent: #0f766e;
+        --border: #d8d1c7;
+        --shadow: 0 18px 50px rgba(31, 41, 51, 0.12);
+      }
+
+      [data-theme="dark"] {
+        color-scheme: dark;
+        --background: #101418;
+        --surface: #182028;
+        --text: #f1f5f9;
+        --muted: #b8c4ce;
+        --accent: #5eead4;
+        --border: #33414f;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--background);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+        transition: background 180ms ease, color 180ms ease;
+      }
+
+      main {
+        width: min(100%, 680px);
+        padding: clamp(28px, 5vw, 56px);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: clamp(2rem, 8vw, 4.25rem);
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.6;
+      }
+
+      .theme-picker {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 32px;
+      }
+
+      .theme-picker button {
+        min-width: 86px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 14px;
+        background: transparent;
+        color: var(--text);
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .theme-picker button[aria-pressed="true"] {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--background);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Hello world!</h1>
+      <p>Nice to see you! Welcome to my place!</p>
+
+      <div class="theme-picker" aria-label="Theme preference">
+        <button type="button" data-theme-choice="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+        <button type="button" data-theme-choice="auto" aria-pressed="false">Auto</button>
+      </div>
+    </main>
+
+    <script>
+      const STORAGE_KEY = "theme-preference";
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const buttons = document.querySelectorAll("[data-theme-choice]");
+
+      function selectedMode() {
+        return localStorage.getItem(STORAGE_KEY) || "light";
+      }
+
+      function resolvedTheme(mode) {
+        if (mode === "auto") {
+          return mediaQuery.matches ? "dark" : "light";
+        }
+
+        return mode;
+      }
+
+      function applyTheme(mode) {
+        document.documentElement.dataset.theme = resolvedTheme(mode);
+
+        buttons.forEach((button) => {
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.themeChoice === mode)
+          );
+        });
+      }
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const mode = button.dataset.themeChoice;
+          localStorage.setItem(STORAGE_KEY, mode);
+          applyTheme(mode);
+        });
+      });
+
+      mediaQuery.addEventListener("change", () => {
+        if (selectedMode() === "auto") {
+          applyTheme("auto");
+        }
+      });
+
+      applyTheme(selectedMode());
+    </script>
+  </body>
+</html>
