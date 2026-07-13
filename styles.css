@@ -1,9 +1,27 @@
 :root {
+  color-scheme: light;
   --canvas: #f7f4ed;
   --surface: #eee9de;
   --ink: #20211e;
   --muted: #6c6b64;
   --accent: #d8ff57;
+  --border: rgba(32, 33, 30, 0.12);
+  --form-border: rgba(32, 33, 30, 0.35);
+  --nav-bg: rgba(247, 244, 237, 0.95);
+  --focus-ring: rgba(32, 33, 30, 0.12);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: #101310;
+  --surface: #1c211b;
+  --ink: #f5f3ea;
+  --muted: #bab7aa;
+  --accent: #d8ff57;
+  --border: rgba(245, 243, 234, 0.16);
+  --form-border: rgba(245, 243, 234, 0.35);
+  --nav-bg: rgba(16, 19, 16, 0.95);
+  --focus-ring: rgba(216, 255, 87, 0.22);
 }
 
 body {
@@ -12,14 +30,16 @@ body {
   color: var(--ink);
   font-family: "Manrope", sans-serif;
   letter-spacing: -0.01em;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
 .navbar {
-  background: rgba(247, 244, 237, 0.95);
+  background: var(--nav-bg);
 }
 
 .navbar-brand,
-.nav-link {
+.nav-link,
+.navbar-toggler {
   color: var(--ink);
 }
 
@@ -33,6 +53,34 @@ body {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 0.4rem;
+}
+
+.navbar-toggler {
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.theme-toggle {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--canvas);
+}
+
+.theme-toggle span {
+  font-weight: 800;
+}
+
+.text-secondary {
+  color: var(--muted) !important;
 }
 
 .hero {
@@ -63,17 +111,31 @@ body {
 
 .btn-dark {
   background: var(--ink);
+  border-color: var(--ink);
+  color: var(--canvas);
+}
+
+.btn-outline-dark {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.btn-outline-dark:hover,
+.btn-outline-dark:focus {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--canvas);
 }
 
 .project-card,
 .contact-card {
   background: var(--surface);
-  border: 1px solid rgba(32, 33, 30, 0.12);
+  border: 1px solid var(--border);
 }
 
 .project-visual {
   min-height: 18rem;
-  border: 1px solid rgba(32, 33, 30, 0.15);
+  border: 1px solid var(--border);
 }
 
 .visual-one {
@@ -90,14 +152,20 @@ body {
 
 .form-control {
   background: var(--canvas);
-  border: 1px solid rgba(32, 33, 30, 0.35);
+  border: 1px solid var(--form-border);
   border-radius: 0;
+  color: var(--ink);
 }
 
 .form-control:focus {
-  background: #fffdf8;
+  background: var(--canvas);
   border-color: var(--ink);
-  box-shadow: 0 0 0 0.2rem rgba(32, 33, 30, 0.12);
+  color: var(--ink);
+  box-shadow: 0 0 0 0.2rem var(--focus-ring);
+}
+
+.form-control::placeholder {
+  color: var(--muted);
 }
 
 @media (max-width: 767.98px) {
